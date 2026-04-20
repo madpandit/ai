@@ -1,0 +1,16 @@
+graph = {
+    'A': [('B', 4), ('C', 2)],
+    'B': [('D', 5), ('E', 1)],
+    'C': [('F', 3)],
+    'D': [], 'E': [], 'F': []
+}
+
+open_list = ['A']
+
+while open_list:
+    node = open_list.pop(0)
+    print(node, end=" ")
+    
+    neighbors = sorted(graph[node], key=lambda x: x[1])
+    for n, cost in neighbors:
+        open_list.append(n)
