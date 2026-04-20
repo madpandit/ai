@@ -1,0 +1,23 @@
+import heapq
+
+graph = {
+    'A': [('B', 1), ('C', 3)],
+    'B': [('D', 1)],
+    'C': [('D', 1)],
+    'D': []
+}
+
+heuristic = {'A': 3, 'B': 1, 'C': 1, 'D': 0}
+
+pq = [(0, 'A')]
+visited = set()
+
+while pq:
+    cost, node = heapq.heappop(pq)
+
+    if node not in visited:
+        print(node, end=" ")
+        visited.add(node)
+
+        for neighbor, weight in graph[node]:
+            heapq.heappush(pq, (cost + weight + heuristic[neighbor], neighbor))
