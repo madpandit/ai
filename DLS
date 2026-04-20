@@ -1,0 +1,15 @@
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D'],
+    'C': ['E'],
+    'D': [],
+    'E': []
+}
+
+def dls(node, depth):
+    if depth >= 0:
+        print(node, end=" ")
+        for neighbor in graph[node]:
+            dls(neighbor, depth - 1)
+
+dls('A', 2)
